@@ -1,0 +1,18 @@
+{
+  "name": "pngquant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "deep-dir": "^2.0.2",
+    "jzyong-ergodic-file": "^1.0.4",
+    "shelljs": "^0.8.4",
+    "walkdo": "^0.9.6"
+  }
+}
