@@ -27,7 +27,6 @@
          }
      }
  };
-
  app.isNoSuch = function(_path)
  {
      try
@@ -39,8 +38,7 @@
      {
          return false;
      }
- }
-
+ };
  app.run = function()
  {
      //源文件
@@ -97,9 +95,20 @@
              let pos = _fullPath.lastIndexOf("/")
              let fileName = _fullPath.substr(pos + 1, _fullPath.length);
              let compressSize = (bfSize - stats.size) / 1024;
-             totalCompressSize += compressSize;
-             console.log(`${fileName} 前${bfSize/1024}kb-后${stats.size/1024}kb 差值= ${Math.floor(compressSize)}kb 累计优化:${Math.floor(totalCompressSize)}kb (${Math.floor(totalCompressSize/1024)}mb) ${Math.floor(totalSize/1024/1024)}MB`);
-         })
+             if (compressSize < 0)
+             {
+                 console.error(fileName + ":优化不成功 size变大了");
+             }
+             else if (compressSize == 0)
+             {
+                 //  console.error(fileName + ":无任何压缩");
+             }
+             else
+             {
+                 totalCompressSize += compressSize;
+                 console.log(`${fileName} 前${bfSize/1024}kb-后${stats.size/1024}kb 差值= ${compressSize}kb 累计优化:${Math.floor(totalCompressSize)}kb (${Math.floor(totalCompressSize/1024)}mb) ${Math.floor(totalSize/1024/1024)}MB`);
+             }
+         });
          return;
      }
      setTimeout(() =>
@@ -107,5 +116,5 @@
          console.log("文件还未生产出来等待...", _fullPath)
          app.getFileSize(_fullPath)
      }, 1000);
- }
+ };
  app.doMain();

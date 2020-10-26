@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/tonyshow/compressImage#readme",
   "dependencies": {
+    "gulp-tinypng-free": "^1.0.13",
     "imagemin": "^7.0.1",
     "images": "^3.2.3",
-    "tinify": "^1.6.0-beta.2"
+    "tinify": "^1.6.0-beta.2",
+    "walkdo": "^0.9.6"
   }
 }
